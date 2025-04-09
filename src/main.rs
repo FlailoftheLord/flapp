@@ -1,9 +1,11 @@
 use bevy::{prelude::*, window::PrimaryWindow};
+use bevy_embedded_assets::EmbeddedAssetPlugin;
 use rand::{rngs::ThreadRng, thread_rng, Rng};
 
 fn main() {
     App::new()
-        .add_plugins(
+        .add_plugins((
+            EmbeddedAssetPlugin::default(),
             DefaultPlugins
                 .set(WindowPlugin {
                     primary_window: Some(Window {
@@ -15,7 +17,7 @@ fn main() {
                     ..Default::default()
                 })
                 .set(ImagePlugin::default_nearest()),
-        )
+        ))
         .add_systems(Startup, setup_level)
         .add_systems(
             Update,
