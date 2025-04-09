@@ -5,7 +5,9 @@ use rand::{rngs::ThreadRng, thread_rng, Rng};
 fn main() {
     App::new()
         .add_plugins((
-            EmbeddedAssetPlugin::default(),
+            EmbeddedAssetPlugin {
+                mode: bevy_embedded_assets::PluginMode::ReplaceDefault,
+            },
             DefaultPlugins
                 .set(WindowPlugin {
                     primary_window: Some(Window {
